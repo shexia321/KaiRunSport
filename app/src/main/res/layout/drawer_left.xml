@@ -1,0 +1,505 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_left"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/colorDrawer"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/x80"
+                android:layout_height="@dimen/x80"
+                android:layout_centerVertical="true"
+                android:src="@drawable/shebeitu" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@id/iv_icon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/default_unlockequipment"
+                    android:textColor="@color/colorwhite"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:layout_width="@dimen/x13"
+                    android:layout_height="@dimen/x13"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/wulanya" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorwhite"></View>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- 久坐提醒-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_jiuzuotixing"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/jiuzuotixing" />
+
+                <LinearLayout
+                    android:layout_toRightOf="@id/iv_jiuzuotixing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/default_jiuzuotixing"
+                        android:textColor="@color/colorwhite" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/default_fullonehouse"
+                        android:textColor="@color/colortextcolor" />
+                </LinearLayout>
+
+                <Switch
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+
+            </RelativeLayout>
+
+            <!--蓝牙断开提醒-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_blueoff"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/lanyatubiao" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_blueoff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_bluetoochoff"
+                    android:textColor="@color/colorwhite" />
+
+                <Switch
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+
+            </RelativeLayout>
+
+            <!-- 闹钟设置-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_duanxintuisong"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/naozhong" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_duanxintuisong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_alarmclock"
+                    android:textColor="@color/colorwhite" />
+
+                <ImageView
+                    android:src="@drawable/xiaojiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+
+            <!-- 心率监测-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_xinlujianc"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/xinlujianc" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_xinlujianc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_xinlvjianc"
+                    android:textColor="@color/colorwhite" />
+
+                <ImageView
+                    android:src="@drawable/xiaojiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <!-- 勿扰模式-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_miandaraomoshi"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/miandaraomoshi" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_miandaraomoshi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_xinlvjianc"
+                    android:textColor="@color/colorwhite" />
+
+                <TextView
+                    android:text="@string/default_kaiqi"
+                    android:textColor="@color/colorwhite"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <!--翻腕亮屏-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_fanwanliangp"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/lanyatubiao" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_fanwanliangp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_fanwanliangp"
+                    android:textColor="@color/colorwhite" />
+
+                <Switch
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+
+            </RelativeLayout>
+
+            <!-- 消息通知 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_xiaoxitongzhi"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/duanxintuisong" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_xiaoxitongzhi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_messagenotuce"
+                    android:textColor="@color/colorwhite" />
+
+                <ImageView
+                    android:src="@drawable/xiaojiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <!-- 手环语言设置-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_yuyanshezhi"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/duanxintuisong" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_yuyanshezhi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_shouhuanyuyanshezhi"
+                    android:textColor="@color/colorwhite" />
+
+                <ImageView
+                    android:src="@drawable/xiaojiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <!--延时自拍 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_yanshizipai"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/fanwanliangping" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_yanshizipai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_yanshizipai"
+                    android:textColor="@color/colorwhite" />
+
+                <ImageView
+                    android:src="@drawable/xiaojiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+
+            <!-- 设备更新-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_shebeigengxin"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/xitongshengji" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_shebeigengxin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_shebeigengxin"
+                    android:textColor="@color/colorwhite" />
+
+                <ImageView
+                    android:src="@drawable/xiaojiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+            <!-- 恢复出厂设置-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_huifuchuchangshezhi"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="@dimen/x30"
+                    android:src="@drawable/huifuchuchangshezhi" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_huifuchuchangshezhi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/default_huifuchuchangshezhi"
+                    android:textColor="@color/colorwhite" />
+
+                <ImageView
+                    android:src="@drawable/xiaojiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
