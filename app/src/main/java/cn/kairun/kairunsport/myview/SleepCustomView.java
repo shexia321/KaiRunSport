@@ -43,7 +43,7 @@ public class SleepCustomView extends View {
     /**
      * 速度
      */
-    private int mSpeed ;
+    private int mSpeed;
 
     /**
      * 是否应该开始下一个
@@ -60,6 +60,11 @@ public class SleepCustomView extends View {
     Thread drawThread;
 
     private boolean goOn = true;
+    /**
+     * 圆环半径
+     */
+    private int radius;
+
     public SleepCustomView(Context context) {
         this(context, null);
 
@@ -68,6 +73,7 @@ public class SleepCustomView extends View {
     public SleepCustomView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
+
     /**
      * 必要的初始化，获得一些自定义的值
      *
@@ -79,11 +85,9 @@ public class SleepCustomView extends View {
         super(context, attrs, defStyle);
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SleepProgressBar, defStyle, 0);
         int n = a.getIndexCount();
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             int attr = a.getIndex(i);
-            switch (attr)
-            {
+            switch (attr) {
                 case R.styleable.SleepProgressBar_firstColor:
                     mFirstColor = a.getColor(attr, Color.GREEN);
                     break;
@@ -97,12 +101,17 @@ public class SleepCustomView extends View {
                 case R.styleable.SleepProgressBar_speed:
                     mSpeed = a.getInt(attr, 20);// 默认20
                     break;
+                case R.styleable.SleepProgressBar_radius:
+                    radius = a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
+                    break;
             }
         }
         a.recycle(); //回收资源
         mPaint = new Paint(); //初始化画笔
 
-   }
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         startDraw();
@@ -110,7 +119,7 @@ public class SleepCustomView extends View {
          * 内圆
          */
         int centre = getWidth() / 2; // 获取圆心的x坐标
-        int radius = 300;// 半径
+        int radius = this.radius;// 半径
         mPaint.setStrokeWidth(mCircleWidth); // 设置圆环的宽度
         mPaint.setAntiAlias(true); // 消除锯齿
         mPaint.setStyle(Paint.Style.STROKE); // 设置空心
@@ -135,7 +144,7 @@ public class SleepCustomView extends View {
         mPaint.setTextSize(80);
         mPaint.setColor(ContextCompat.getColor(getContext(), R.color.colorabroadcircular));
         mPaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(String.valueOf(sleepHour)+"小时", oval.centerX(), oval.centerX() + 20, mPaint);
+        canvas.drawText(String.valueOf(sleepHour) + "小时", oval.centerX(), oval.centerX() + 20, mPaint);
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStrokeWidth(2);
@@ -153,30 +162,21 @@ public class SleepCustomView extends View {
     /**
      * 开始绘制
      */
-    public void startDraw(){
-        drawThread = new Thread() {
-            public void run()
-            {
-                while (goOn)
-                {
-                    if(sleepHour <= 200){
-                        mProgress++;
-                        sleepHour++;
-                        postInvalidate(); //重绘圆
-                    }
-                    if(sleepHour == 200){
-                        goOn =false;
-                    }
-                }
-            };
-        };
-        drawThread.start();
+    public void startDraw() {
+        if (sleepHour <= 200){
+            mProgress++;
+            sleepHour++;
+            postInvalidate(); //重绘圆
+        }
+        if (sleepHour == 200){
+            goOn = false;
+        }
     }
 
     /**
      * 初始化圆
      */
-    public void initDraw(){
+    public void initDraw() {
         mProgress = 0;
         sleepHour = 0;
         postInvalidate(); //重绘圆

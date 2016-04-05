@@ -21,6 +21,8 @@
                 android:id="@+id/cks_myview"
                 android:layout_width="match_parent"
                 android:layout_height="310dp"
+                app:radius="@dimen/x100"
+                app:insideradius="@dimen/x80"
                 app:circleWidth="11dp"
                 app:firstColor="@color/colorabroadcircular"
                 app:insidecircleWidth="5dp"

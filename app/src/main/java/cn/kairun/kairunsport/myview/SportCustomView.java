@@ -1,4 +1,5 @@
 package cn.kairun.kairunsport.myview;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -9,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
+
 import cn.kairun.kairunsport.R;
 
 public class SportCustomView extends View {
@@ -35,7 +37,7 @@ public class SportCustomView extends View {
     /**
      * 内环第二圈的颜色
      */
-    private  int insidesecondColor;
+    private int insidesecondColor;
 
     /**
      * 内环圈的宽度
@@ -71,19 +73,20 @@ public class SportCustomView extends View {
     private int stepCount;
     private int calorieCount;
 
+    private int radius;
+    private int insideRadius;
     /**
      * 绘制线程
      */
     Thread drawThread;
 
     private boolean goOn = true;
-    public SportCustomView(Context context, AttributeSet attrs)
-    {
+
+    public SportCustomView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SportCustomView(Context context)
-    {
+    public SportCustomView(Context context) {
         this(context, null);
     }
 
@@ -99,11 +102,9 @@ public class SportCustomView extends View {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomProgressBar, defStyle, 0);
         int n = a.getIndexCount();
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             int attr = a.getIndex(i);
-            switch (attr)
-            {
+            switch (attr) {
                 case R.styleable.CustomProgressBar_firstColor:
                     mFirstColor = a.getColor(attr, Color.GREEN);
                     break;
@@ -119,7 +120,7 @@ public class SportCustomView extends View {
                     break;
 
                 case R.styleable.CustomProgressBar_insidefirstColor:
-                    insidefirstColor = a.getColor(attr,Color.GREEN);
+                    insidefirstColor = a.getColor(attr, Color.GREEN);
                     break;
                 case R.styleable.CustomProgressBar_insidesecondColor:
                     insidesecondColor = a.getColor(attr, Color.RED);
@@ -128,13 +129,23 @@ public class SportCustomView extends View {
                     insidemCircleWidth = a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
                     break;
+                case R.styleable.CustomProgressBar_radius:
+                    radius = a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
+                    break;
+
+                case R.styleable.CustomProgressBar_insideradius:
+                    insideRadius = a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_PX, 20, getResources().getDisplayMetrics()));
+                    break;
+
             }
         }
         a.recycle(); //回收资源
         mPaint = new Paint(); //初始化画笔
         // 绘图线程
 
-   }
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -143,7 +154,7 @@ public class SportCustomView extends View {
          * 外圆
          */
         int centre = getWidth() / 2; // 获取圆心的x坐标
-        int radius = 300;// 半径
+        int radius = this.radius;// 半径
         mPaint.setStrokeWidth(mCircleWidth); // 设置圆环的宽度
         mPaint.setAntiAlias(true); // 消除锯齿
         mPaint.setStyle(Paint.Style.STROKE); // 设置空心
@@ -158,7 +169,7 @@ public class SportCustomView extends View {
          * 内圆
          */
         int indiseCentre = getWidth() / 2; // 获取圆心的x坐标
-        int indiseRadius = 250;// 半径
+        int indiseRadius = this.insideRadius;// 半径
         mPaint.setStrokeWidth(insidemCircleWidth); // 设置圆环的宽度
         mPaint.setAntiAlias(true); // 消除锯齿
         mPaint.setStyle(Paint.Style.STROKE); // 设置空心
@@ -182,7 +193,7 @@ public class SportCustomView extends View {
         mPaint.setTextSize(80);
         mPaint.setColor(ContextCompat.getColor(getContext(), R.color.colorabroadcircular));
         mPaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(String.valueOf(stepCount)+"步", indiseOval.centerX(), indiseOval.centerX() + 20, mPaint);
+        canvas.drawText(String.valueOf(stepCount) + "步", indiseOval.centerX(), indiseOval.centerX() + 20, mPaint);
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStrokeWidth(2);
@@ -194,41 +205,33 @@ public class SportCustomView extends View {
         mPaint.setTextSize(50);
         mPaint.setColor(ContextCompat.getColor(getContext(), R.color.colorBlue));
         mPaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(String.valueOf(calorieCount)+"卡", indiseOval.centerX(), indiseOval.centerX() + 120, mPaint);
+        canvas.drawText(String.valueOf(calorieCount) + "卡", indiseOval.centerX(), indiseOval.centerX() + 120, mPaint);
     }
 
     /**
      * 开始绘制
      */
-    public void startDraw(){
-        drawThread = new Thread() {
-            public void run()
-            {
-                while (goOn)
-                {
-                    if(stepCount<=100){
-                        stepCount++;
-                        mProgress++;
-                        postInvalidate(); //重绘圆
-                    }
-                    if(calorieCount<=150){
-                        calorieCount++;
-                        indesemProgress++;
-                        postInvalidate(); //重绘圆
-                    }
-                    if(stepCount == 100 && calorieCount ==150){
-                        goOn=false;
-                    }
-                }
-            };
-        };
-        drawThread.start();
+    public void startDraw() {
+        if (stepCount <= 100) {
+            stepCount++;
+            mProgress++;
+            postInvalidate(); //重绘圆
+        }
+        if (calorieCount <= 150) {
+            calorieCount++;
+            indesemProgress++;
+            postInvalidate(); //重绘圆
+        }
+        if (stepCount == 100 && calorieCount == 150) {
+            goOn = false;
+        }
     }
 
     /**
      * 初始化绘制
      */
-    public void initDraw(){
+
+    public void initDraw() {
         stepCount = 0;
         calorieCount = 0;
         indesemProgress = 0;

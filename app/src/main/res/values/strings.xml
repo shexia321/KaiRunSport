@@ -33,9 +33,9 @@
 
     <string name="default_bluetoochoff">蓝牙断开提醒</string>
 
-    <string name ="default_alarmclock">闹钟设置</string>
+    <string name="default_alarmclock">闹钟设置</string>
 
-    <string name ="default_xinlvjianc">心率监测</string>
+    <string name="default_xinlvjianc">心率监测</string>
 
     <string name="default_kaiqi">开启</string>
 
@@ -56,4 +56,12 @@
     <string name="default_sex">性别:男</string>
 
     <string name="default_exit">退出账号</string>
+
+    <string name="default_sport">运动</string>
+
+    <string name="default_sleep">睡眠</string>
+
+    <string name="default_sharp">分享</string>
+
+    <string name="default_mouth_Statistics">月统计</string>
 </resources>

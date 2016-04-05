@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_below="@id/tv_data"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart1"
@@ -86,4 +85,28 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/buttomtoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/colorPrimary"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:textColor="@color/colorwhite"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="分享" />
+        <TextView
+            android:layout_width="0dp"
+            android:textColor="@color/colorwhite"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="月统计" />
+    </LinearLayout>
 </RelativeLayout>

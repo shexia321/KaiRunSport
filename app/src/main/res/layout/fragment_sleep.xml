@@ -14,11 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include layout="@layout/include_loading"></include>
+            <include layout="@layout/include_loading">
+
+            </include>
+
             <cn.kairun.kairunsport.myview.SleepCustomView
                 android:id="@+id/cks_myview"
                 android:layout_width="match_parent"
                 android:layout_height="310dp"
+                app:radius="@dimen/x100"
                 app:circleWidth="11dp"
                 app:firstColor="@color/colorViolet"
                 app:secondColor="@color/colordefaultircular"
