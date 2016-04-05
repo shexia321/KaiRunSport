@@ -37,7 +37,7 @@ public class SleepFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_sleep, container, false);
         linearLayoutLoad = (LinearLayout)view.findViewById(R.id.layout_linearload);
         sleepCustomView = (SleepCustomView)view.findViewById(R.id.cks_myview);
-        sleepCustomView.setOnClickListener(this);
+        //sleepCustomView.setOnClickListener(this);
         customerScrollView = (CustomerScrollView)view.findViewById(R.id.cs_scrollview);
         customerScrollView.setOnRefreshListener(new CustomerScrollView.PullToRefreshListener() {
             @Override
@@ -45,13 +45,14 @@ public class SleepFragment extends Fragment implements View.OnClickListener{
                 linearLayoutLoad.setVisibility(View.VISIBLE);
             }
         });
+        customerScrollView.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.cks_myview:
+            case R.id.cs_scrollview:
                 Intent intent =new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 break;

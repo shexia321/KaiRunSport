@@ -3,9 +3,11 @@ package cn.kairun.kairunsport.myview;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 /**
  * Created by ZengRong on 2016/3/29.
@@ -19,8 +21,8 @@ public class CustomerScrollView extends ScrollView {
     private boolean handleStop = false;
     private int eachStep = 0;
 
-    private static final int MAX_SCROLL_HEIGHT = 200;// 最大滑动距离
-    private static final float SCROLL_RATIO = 0.5f;// 阻尼系数,越小阻力就越大
+    private static final int MAX_SCROLL_HEIGHT = 400;// 最大滑动距离
+    private static final float SCROLL_RATIO = 0.3f;// 阻尼系数,越小阻力就越大
 
     public CustomerScrollView(Context context) {
         super(context);
@@ -131,15 +133,17 @@ public class CustomerScrollView extends ScrollView {
                 scrollY -= eachStep;
                 if ((eachStep < 0 && scrollY > 0) || (eachStep > 0 && scrollY < 0)) {
                     scrollY = 0;
-                    mListener.onRefresh();
+                    if(eachStep < 0){
+                        mListener.onRefresh();
+                    }else {
+
+                    }
                 }
 
                 mView.scrollTo(0, scrollY);
                 this.sendEmptyMessageDelayed(0, 5);
             }
         }
-
-        ;
     };
 
 }
