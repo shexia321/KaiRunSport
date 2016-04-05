@@ -8,8 +8,11 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import cn.kairun.kairunsport.R;
 
@@ -144,8 +147,9 @@ public class SportCustomView extends View {
         a.recycle(); //回收资源
         mPaint = new Paint(); //初始化画笔
         // 绘图线程
-
     }
+
+
 
     @Override
     protected void onDraw(Canvas canvas) {

@@ -1,6 +1,7 @@
 package cn.kairun.kairunsport.myview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.Toast;
+
+import cn.kairun.kairunsport.activity.MainActivity;
 
 /**
  * Created by ZengRong on 2016/3/29.
@@ -83,6 +86,7 @@ public class CustomerScrollView extends ScrollView {
         }
         return super.onTouchEvent(ev);
     }
+
 
     private void commonOnTouchEvent(MotionEvent ev) {
         int action = ev.getAction();
