@@ -54,7 +54,7 @@ public class CustomerScrollView extends ScrollView {
      * @author guolin
      */
     public interface PullToRefreshListener {
-        void onRefresh();
+        void onRefresh(int flag);
     }
 
     public void setOnRefreshListener(PullToRefreshListener listener) {
@@ -138,9 +138,9 @@ public class CustomerScrollView extends ScrollView {
                 if ((eachStep < 0 && scrollY > 0) || (eachStep > 0 && scrollY < 0)) {
                     scrollY = 0;
                     if(eachStep < 0){
-                        mListener.onRefresh();
+                        mListener.onRefresh(1);
                     }else {
-
+                        mListener.onRefresh(2);
                     }
                 }
 

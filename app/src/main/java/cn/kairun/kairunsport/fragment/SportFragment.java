@@ -42,12 +42,17 @@ public class SportFragment extends Fragment implements View.OnClickListener{
         customerScrollView = (CustomerScrollView)view.findViewById(R.id.cs_scrollview);
         customerScrollView.setOnRefreshListener(new CustomerScrollView.PullToRefreshListener() {
             @Override
-            public void onRefresh() {
-                linearLayoutLoad.setVisibility(View.VISIBLE);
+            public void onRefresh(int flag) {
+                if(1 == flag){
+                    linearLayoutLoad.setVisibility(View.VISIBLE);
+                }else if(2 == flag){
+                    linearLayoutLoad.setVisibility(View.GONE);
+                }
+
             }
         });
         sportCustomView = (SportCustomView)view.findViewById(R.id.cks_myview);
-        sportCustomView.setOnClickListener(this);
+        //sportCustomView.setOnClickListener(this);
         return view ;
     }
 
